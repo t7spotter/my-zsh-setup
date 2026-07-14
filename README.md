@@ -75,5 +75,10 @@ VS Code's integrated terminal doesn't respect the system login shell — it need
 
 ## Requirements
 
-- Ubuntu/Debian (`apt`) or RHEL/CentOS (`yum`) based VPS
-- `sudo` access (or run as root)
+- Ubuntu/Debian (`apt`) or RHEL/CentOS (`yum`) based VPS, **or** macOS (via Homebrew)
+- `sudo` access (or run as root, on Linux)
+
+## Platform notes
+
+- **Linux**: installs via `apt`/`yum`, sets the shell system-wide with `chsh`.
+- **macOS**: installs [Homebrew](https://brew.sh) first if missing, then `zsh`/`git`/`curl` via `brew`. macOS has shipped zsh as the default shell since Catalina (2019), so on most Macs this mainly just gets you the oh-my-zsh + bira + plugin setup rather than changing your shell.
