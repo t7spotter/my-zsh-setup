@@ -75,10 +75,11 @@ VS Code's integrated terminal doesn't respect the system login shell — it need
 
 ## Requirements
 
-- Ubuntu/Debian (`apt`) or RHEL/CentOS (`yum`) based VPS, **or** macOS (via Homebrew)
+- One of: Debian/Ubuntu (`apt`), Fedora/RHEL 8+/Rocky/Alma (`dnf`), older RHEL/CentOS (`yum`), Arch/Manjaro (`pacman`), openSUSE (`zypper`), Alpine (`apk`), or macOS (Homebrew)
 - `sudo` access (or run as root, on Linux)
 
 ## Platform notes
 
-- **Linux**: installs via `apt`/`yum`, sets the shell system-wide with `chsh`.
+- **Linux**: detects your package manager (`apt`, `dnf`, `yum`, `pacman`, `zypper`, or `apk`) and installs `zsh`/`git`/`curl` accordingly, then sets the shell system-wide with `chsh`.
 - **macOS**: installs [Homebrew](https://brew.sh) first if missing, then `zsh`/`git`/`curl` via `brew`. macOS has shipped zsh as the default shell since Catalina (2019), so on most Macs this mainly just gets you the oh-my-zsh + bira + plugin setup rather than changing your shell.
+- **Alpine**: also installs `bash`, since Alpine's default shell is `ash` (BusyBox) and the script itself requires bash to run. Alpine's minimal images may not include `sudo` — if `sudo` isn't found, re-run the relevant commands as root directly.
