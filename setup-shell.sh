@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # setup-shell.sh — bootstrap zsh + oh-my-zsh (bira theme) on a fresh VPS
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/<you>/<repo>/main/setup-shell.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/t7spotter/<my-zsh-setup/main/setup-shell.sh | bash
 # or after cloning your dotfiles repo:
 #   bash setup-shell.sh
 
@@ -20,9 +20,23 @@ if [ "$OS" = "Darwin" ]; then
     fi
     brew install zsh git curl
 elif command -v apt >/dev/null 2>&1; then
+    # Debian, Ubuntu, Mint, Pop!_OS, etc.
     sudo apt update && sudo apt install -y zsh git curl
+elif command -v dnf >/dev/null 2>&1; then
+    # Fedora, RHEL 8+, Rocky, AlmaLinux
+    sudo dnf install -y zsh git curl
 elif command -v yum >/dev/null 2>&1; then
+    # Older RHEL/CentOS
     sudo yum install -y zsh git curl
+elif command -v pacman >/dev/null 2>&1; then
+    # Arch, Manjaro
+    sudo pacman -Sy --noconfirm zsh git curl
+elif command -v zypper >/dev/null 2>&1; then
+    # openSUSE
+    sudo zypper --non-interactive install zsh git curl
+elif command -v apk >/dev/null 2>&1; then
+    # Alpine
+    sudo apk add --no-cache zsh git curl bash
 else
     echo "Unsupported package manager. Install zsh/git/curl manually." >&2
     exit 1
