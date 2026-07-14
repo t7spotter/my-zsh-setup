@@ -65,7 +65,7 @@ if ! grep -qx "$ZSH_PATH" /etc/shells; then
 fi
 sudo chsh -s "$ZSH_PATH" "$(whoami)"
 
-echo "==> Done. Log out and back in (or run 'exec zsh') to start using it."
+echo "==> Done. Run 'exec zsh' now, or exit twice (exit; exit) and reconnect via SSH to start using it."
 echo "==> For VS Code Remote-SSH, also add to Remote Settings (JSON) on this host:"
 cat <<'EOF'
 {
